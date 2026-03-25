@@ -1,0 +1,12 @@
+name: Insecure Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Insecure Step
+        run: |
+          echo "AWS KEY = AKIA123456"
+          echo "SECRET = mypassword"
