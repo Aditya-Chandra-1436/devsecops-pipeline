@@ -1,12 +1,17 @@
-name: Insecure Pipeline
+name: Secure Pipeline
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    environment: production
+
     steps:
-      - name: Insecure Step
-        run: |
-          echo "AWS KEY = AKIA123456"
-          echo "SECRET = mypassword"
+      - name: Secure Step
+        run: echo "Deploying securely"
+
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
